@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { MapState } from "./map.reducer";
 import { LngLatLike, LngLatBounds } from "mapbox-gl";
 import * as mapSelectors from "./map.selectors";
+import { loadMapChanged } from "./map.actions";
 
 @Injectable()
 export class MapFacadeService {
@@ -17,5 +18,15 @@ export class MapFacadeService {
     this.center$ = this.store.select(mapSelectors.getCurrentCenter);
     this.zoom$ = this.store.select(mapSelectors.getCurrentZoom);
     this.bbox$ = this.store.select(mapSelectors.getCurrentBBox);
+  }
+
+  mapChanged(bbox: LngLatBounds, center: LngLatLike, zoom: number) {
+    this.store.dispatch(
+      loadMapChanged({
+        bbox,
+        center,
+        zoom
+      })
+    );
   }
 }

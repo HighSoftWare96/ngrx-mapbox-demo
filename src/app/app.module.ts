@@ -11,12 +11,14 @@ import { MapHolderService } from "./services/mapHolder.service";
 import { MyGeoJSONApiService } from "./services/myGeoJSONApi.service";
 import { EffectsModule } from "@ngrx/effects";
 import { MapEffects } from "./store/map.effects";
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot({
       map: mapReducer
     }),
