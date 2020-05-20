@@ -18,15 +18,19 @@ export class AppComponent {
   constructor(
     private mapHolder: MapHolderService,
     private mapFacade: MapFacadeService
-    ) {}
+  ) {}
 
   loadMap(map: Map) {
     this.mapHolder.setMapRef(map);
   }
 
-  updateMap(event) {
+  updateMap(event: { target: Map }) {
     const { target } = event;
-    this.mapFacade.mapChanged(target.getBounds(), target.getCenter(), target.getZoom());
+    this.mapFacade.mapChanged(
+      target.getBounds(),
+      target.getCenter(),
+      target.getZoom()
+    );
   }
 }
 
