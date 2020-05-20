@@ -8,6 +8,9 @@ import { mapReducer } from "./store/map.reducer";
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapFacadeService } from "./store/mapFacade.service";
 import { MapHolderService } from "./services/mapHolder.service";
+import { MyGeoJSONApiService } from "./services/myGeoJSONApi.service";
+import { EffectsModule } from "@ngrx/effects";
+import { MapEffects } from "./store/map.effects";
 
 
 @NgModule({
@@ -17,11 +20,15 @@ import { MapHolderService } from "./services/mapHolder.service";
     StoreModule.forRoot({
       map: mapReducer
     }),
+    EffectsModule.forRoot([
+      MapEffects
+    ]),
     NgxMapboxGLModule
   ],
   providers: [
     MapFacadeService,
-    MapHolderService
+    MapHolderService,
+    MyGeoJSONApiService
   ],
   bootstrap: [AppComponent]
 })

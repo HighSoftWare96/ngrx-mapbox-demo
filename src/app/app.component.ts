@@ -8,10 +8,15 @@ import { Map } from "mapbox-gl";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+  initialCenter =  {
+    lat: 45.464211,
+    lng: 9.191383
+  };
+  initialZoom = 8;
+
   constructor(private mapHolder: MapHolderService) {}
 
   loadMap(map: Map) {
-    console.log(map);
     this.mapHolder.setMapRef(map);
   }
 
