@@ -14,8 +14,8 @@ export class MapFacadeService {
 
   constructor(private store: Store<any>) {
     this.mapState$ = this.store.select(mapSelectors.getMapState);
-    this.center$ = this.store.select(mapSelectors.getCenter);
-    this.zoom$ = this.store.select(mapSelectors.getZoom);
-    this.bbox$ = this.store.select(mapSelectors.getBBox);
+    this.center$ = this.store.select(mapSelectors.getCurrentCenter);
+    this.zoom$ = this.store.select(mapSelectors.getCurrentZoom);
+    this.bbox$ = this.store.select(mapSelectors.getCurrentBBox);
   }
 }

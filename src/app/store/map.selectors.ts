@@ -1,7 +1,7 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
 import { MapState } from "./map.reducer";
 
-export const getMapState = createFeatureSelector("map");
+export const getMapState = createFeatureSelector<MapState>("map");
 
 export const getCurrentCenter = createSelector(
   getMapState,

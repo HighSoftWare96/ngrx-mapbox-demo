@@ -5,6 +5,10 @@ import { AppComponent } from "./app.component";
 
 import { StoreModule } from "@ngrx/store";
 import { mapReducer } from "./store/map.reducer";
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { MapFacadeService } from "./store/mapFacade.service";
+import { MapHolderService } from "./services/mapHolder.service";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,9 +16,13 @@ import { mapReducer } from "./store/map.reducer";
     BrowserModule,
     StoreModule.forRoot({
       map: mapReducer
-    })
+    }),
+    NgxMapboxGLModule
   ],
-  providers: [],
+  providers: [
+    MapFacadeService,
+    MapHolderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
