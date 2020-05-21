@@ -26,6 +26,7 @@ export class AppComponent {
 
   loadMap(map: Map) {
     this.mapHolder.setMapRef(map);
+    this.mapFacade.mapChanged(map.getBounds(), map.getCenter(), map.getZoom());
   }
 
   updateMap(event: { target: Map }) {
@@ -38,7 +39,7 @@ export class AppComponent {
   }
 
   markerClick(marker: any) {
-    this.markerClick(marker.geometry.coordinates);
+    this.mapFacade.clickOnMarker(marker.geometry.coordinates);
   }
 }
 

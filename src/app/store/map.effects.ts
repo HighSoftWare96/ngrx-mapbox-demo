@@ -29,7 +29,7 @@ export class MapEffects {
     switchMap(([_, mapState]) => {
       const { bbox, zoom, center } = mapState;
       return this.api.get(bbox).pipe(
-        map(data => updateDataSuccess({ geoJson: data })),
+        map(data => updateDataSuccess({ geoJSON: data })),
         catchError(err => of(updateDataFailure()))
       );
     })
