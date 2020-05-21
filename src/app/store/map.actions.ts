@@ -10,9 +10,12 @@ export const updateData = createAction("[Map.data] update data");
 
 export const updateDataSuccess = createAction(
   "[Map.data] update data success",
-  props<{ geoJson: any }>()
+  props<{ geoJSON: any }>()
 );
 
-export const updateDataFailure = createAction(
-  "[Map.data] update data failure"
+export const updateDataFailure = createAction("[Map.data] update data failure");
+
+export const markerClick = createAction(
+  "[Map.user] Marker click",
+  props<{ coords: LngLatLike }>()
 );

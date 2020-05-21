@@ -6,6 +6,7 @@ export interface MapState {
   center: LngLatLike;
   zoom: number;
   bbox: LngLatBounds;
+  geoJSON: any;
 }
 
 export const initialState: MapState = {
@@ -14,7 +15,8 @@ export const initialState: MapState = {
     lng: 9.191383
   },
   zoom: 13,
-  bbox: undefined
+  bbox: undefined,
+  geoJSON: {}
 };
 
 const _mapReducer = createReducer(
@@ -23,6 +25,10 @@ const _mapReducer = createReducer(
     center,
     zoom,
     bbox
+  })),
+  on(mapActions.updateDataSuccess, (state, { geoJSON }) => ({
+    ...state,
+    geoJSON
   }))
 );
 

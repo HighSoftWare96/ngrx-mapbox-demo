@@ -17,3 +17,8 @@ export const getCurrentBBox = createSelector(
   getMapState,
   (state: MapState) => state.bbox
 );
+
+export const getGeoJSON = createSelector(
+  getMapState,
+  (state: MapState) => state.geoJSON
+);

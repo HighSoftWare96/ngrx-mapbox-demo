@@ -1,2 +1,7 @@
 <h1>NgRx + Mapbox Tutorial</h1>
-<mgl-map [center]="initialCenter" [zoom]="[initialZoom]" (load)="loadMap($event)" [style]="'assets/map.style.json'" (moveEnd)="updateMap($event)"></mgl-map>
+<p>{{(geoJSON$ | async) | json}}</p>
+<mgl-map [center]="initialCenter" [zoom]="[initialZoom]" (load)="loadMap($event)" [style]="'assets/map.style.json'"
+	(moveEnd)="updateMap($event)">
+	<mgl-marker *ngFor="let feature of (geoJSON$ | async)?.features" [feature]="feature" >
+	</mgl-marker>
+</mgl-map>

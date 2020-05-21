@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { MapHolderService } from "./services/mapHolder.service";
 import { Map } from "mapbox-gl";
 import { MapFacadeService } from "./store/mapFacade.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -10,15 +11,18 @@ import { MapFacadeService } from "./store/mapFacade.service";
 })
 export class AppComponent {
   initialCenter = {
-    lat: 45.464211,
-    lng: 9.191383
+    lat: 40.785091,
+    lng: -73.968285
   };
   initialZoom = 8;
+  geoJSON$: Observable<any>;
 
   constructor(
     private mapHolder: MapHolderService,
     private mapFacade: MapFacadeService
-  ) {}
+  ) {
+    this.geoJSON$ = mapFacade.geoJSON$;
+  }
 
   loadMap(map: Map) {
     this.mapHolder.setMapRef(map);
@@ -31,6 +35,10 @@ export class AppComponent {
       target.getCenter(),
       target.getZoom()
     );
+  }
+
+  markerClick(marker: any) {
+    this.markerClick(marker.geometry.coordinates);
   }
 }
 
